@@ -1,0 +1,10 @@
+{
+  "name": "zachisit/BWBSalesContact",
+  "type": "wordpress-plugin",
+  "require": {},
+  "autoload":{
+    "psr-4": {
+      "BWBSalesContact\\" : "./"
+    }
+  }
+}
