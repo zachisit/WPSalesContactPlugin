@@ -4,6 +4,7 @@ namespace BWBSalesContact\Shortcodes;
 
 
 use BWBSalesContact\ContactForm;
+use BWBSalesContact\Email;
 use BWBSalesContact\Utility;
 
 class SalesContactForm extends Shortcode
@@ -51,5 +52,14 @@ class SalesContactForm extends Shortcode
 
         $formData = new ContactForm($contactFormData);
         $formData->insertIntoDB();
+
+        $email = new Email(
+            'admin',
+            'New Contact from: PageID',
+            $contactFormData,
+            'zach@zachis.it',
+            $contactFormData['email']
+            );
+        $email->sendMail();
     }
 }

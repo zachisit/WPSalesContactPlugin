@@ -8,7 +8,7 @@
  */
 
 jQuery(function($) {
-    var $newContactForm = $('#newContactSubmission'),
+    var $newContactForm = $('#SalesContactForm'),
         $formSubmit = $newContactForm.find('.submit');
 
     $formSubmit.click(function(e){
@@ -23,14 +23,14 @@ jQuery(function($) {
             //run through native inputs
             switch($(this).find('input').attr('type')) {
                 case 'text':
-                case 'email':
-                    console.log('text input')
-                    if ($(this).find('input').val().length === 0) {
-                        $(this).closest('.row').addClass('inputError');
-                        buildFeedbackMessage($feedbackMessageDiv,'A required input field is empty',$(this),'fail');
-                        submit = false;
-                    }
-                    break;
+                // case 'email':
+                //     console.log('text input')
+                //     if ($(this).find('input').val().length === 0) {
+                //         $(this).closest('.row').addClass('inputError');
+                //         buildFeedbackMessage($feedbackMessageDiv,'A required input field is empty',$(this),'fail');
+                //         submit = false;
+                //     }
+                //     break;
                 // case 'radio':
                 //     var hasSelection = false;
                 //
@@ -72,13 +72,30 @@ jQuery(function($) {
             spinnerDirection('hide',$spinner);
 
             return postDataToDatabase(
-                new FormData($newContactForm[0]),
+                formToObject($newContactForm),
                 $feedbackMessageDiv,
                 $spinner,
                 'Contact Success! Redirecting...'
             );
         }
     });
+
+    /**
+     * Form to Object
+     *
+     * @param formData
+     * @returns {{}}
+     */
+    function formToObject(formData) {
+        var p = {};
+
+        $.each($(formData).serializeArray(),function(i, e){
+            p[e.name] = e.value;
+        });
+
+        console.log(p);
+        return p;
+    }
 
     /**
      * Show or Hide the Loading Spinner
@@ -126,6 +143,8 @@ jQuery(function($) {
      *
      * @param dataArray
      * @param successDiv
+     * @param spinner
+     * @param successMessage
      */
     function postDataToDatabase(dataArray,successDiv,spinner,successMessage) {
         $.ajax({
@@ -141,7 +160,7 @@ jQuery(function($) {
                     buildFeedbackMessage(successDiv,successMessage,null,'success');
                     setTimeout(function(){
                         // location.reload();
-                        window.location.replace('http://localhost/bwb/thank-you')
+                        window.location.replace('http://localhost/bwb/marketing-thank-you/')
                     } , 1001);
                 } else {
                     buildFeedbackMessage(successDiv,'Error: '+status,null,'fail');

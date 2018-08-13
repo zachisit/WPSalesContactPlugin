@@ -5,27 +5,31 @@
  * @package bwb-contact
  */
 ?>
-
+<style>
+    .displayNone {
+        display:none;
+    }
+</style>
 <form action="" id="SalesContactForm">
     <div class="row required">
-        <label for="newContactName">Name</label>
+        <label for="newContactName" class="displayNone">Name</label>
         <input type="text" id="newContactName" name="newContactName" placeholder="Name *"/>
     </div>
     <div class="row required">
-        <label for="newContactBusinessName">Business Name</label>
+        <label for="newContactBusinessName" class="displayNone">Business Name</label>
         <input type="text" id="newContactBusinessName" name="newContactBusinessName" placeholder="Business Name *"/>
     </div>
     <p>Preferred method of follow up (must select one):</p>
     <div class="row required">
-        <label for="newContactEmail">Email</label>
+        <label for="newContactEmail" class="displayNone">Email</label>
         <input type="text" id="newContactEmail" name="newContactEmail" placeholder="Email *"/>
     </div>
     <div class="row required">
-        <label for="newContactConfirmEmail">Confirm Email</label>
+        <label for="newContactConfirmEmail" class="displayNone">Confirm Email</label>
         <input type="text" id="newContactConfirmEmail" name="newContactConfirmEmail" placeholder="Confirm Email *"/>
     </div>
     <div class="row required">
-        <label for="newContactPhone">Phone</label>
+        <label for="newContactPhone" class="displayNone">Phone</label>
         <input type="text" id="newContactPhone" name="newContactPhone" placeholder="Phone *"/>
     </div>
     <p>I'd also like to learn more about (Select all that apply):</p>

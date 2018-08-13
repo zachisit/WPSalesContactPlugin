@@ -14,8 +14,8 @@ class BWBSalesContact
         register_activation_hook(BWB_SALES_CONTACT, [__CLASS__, 'install']);
         //register_deactivation_hook(BWB_SALES_CONTACT, [__CLASS__, 'uninstall']);
 
-        $this->addActions();
-        $this->registerFilters();
+        //$this->addActions();
+        //$this->registerFilters();
 
         Shortcode::addShortcodes();
     }
@@ -83,6 +83,7 @@ class BWBSalesContact
 
     public static function localizedAjaxURL($handle)
     {
+        error_log('here');
         wp_localize_script( $handle, 'ajax', ['url' => admin_url('admin-ajax.php')] );
     }
 }
