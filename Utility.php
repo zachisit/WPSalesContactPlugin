@@ -29,8 +29,12 @@ class Utility
         return ob_get_clean();
     }
 
-    /*
-     * get list of nonstatic properties for a class
+    /**
+     * @param $object
+     * @param bool $includeParentProperties
+     * @param bool $includeTraitProperties
+     * @return array
+     * @throws \ReflectionException
      */
     public static function getNonStaticProperties($object, $includeParentProperties = true, $includeTraitProperties = false)
     {
@@ -57,7 +61,7 @@ class Utility
         }
 
         if (!$includeParentProperties && $parent = get_parent_class($object)) {
-            $parentProps = getNonStaticProperties($parent, true);
+            $parentProps = self::getNonStaticProperties($parent, true);
             $result = array_diff($result, $parentProps);
         }
 
@@ -113,5 +117,10 @@ class Utility
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
+    }
+
+    public static function getCurrentTime()
+    {
+        return date('Y-m-d H:i:s');
     }
 }

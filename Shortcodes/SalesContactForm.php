@@ -40,18 +40,22 @@ class SalesContactForm extends Shortcode
     public function bwbMarketingContactForm()
     {
         $contactFormData = [
-            'pageID' => get_the_ID(),
+            'pageID' => $_POST['pageID'],
             'formType' => $_POST['formType'],
             'name' => $_POST['newContactName'],
             'businessName' => $_POST['newContactBusinessName'],
             'email' => $_POST['newContactEmail'],
             'phone' => $_POST['newContactPhone'],
-            'learnAboutOptions' => 'test',
-            'ip' => Utility::getUserInternetProtocol()
+            'learnAboutOptions' => implode("|", $_POST['learnMoreAbout']),
+            'ip' => Utility::getUserInternetProtocol(),
+            'timeStamp' => Utility::getCurrentTime()
         ];
 
         $formData = new ContactForm($contactFormData);
         $formData->insertIntoDB();
+
+        $contactFormData['learnAboutOptions'] = explode('|', $contactFormData['learnAboutOptions']);
+        //@TODO:implode with commaspace in template
 
         $email = new Email(
             'admin',
