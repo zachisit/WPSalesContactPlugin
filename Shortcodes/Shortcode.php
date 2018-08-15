@@ -16,7 +16,8 @@ abstract class Shortcode
     protected $additionalCSS = [];
 
     private static $definedShortCodes = [
-        'SalesContactForm'
+        'SalesContactForm',
+        'ThankYou'
     ];
     private static $initializedShortCodes = [];
 

@@ -204,7 +204,7 @@ jQuery(function($) {
                     buildFeedbackMessage(successDiv,successMessage,null,'success');
                     setTimeout(function(){
                         // location.reload();
-                        window.location.replace('http://localhost/bwb/marketing-thank-you/')
+                        window.location.replace('/email-marketing-landing-thank-you//')
                     } , 1001);
                 } else {
                     buildFeedbackMessage(successDiv,'Error: '+status,null,'fail');

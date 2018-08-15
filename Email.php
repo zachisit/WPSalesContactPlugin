@@ -5,28 +5,37 @@ namespace BWBSalesContact;
 
 class Email
 {
-    protected $emailType; //agent or admin
     protected $subject;
-    protected $body;
-    protected $headers;
-    protected $sendTo;
-    protected $from;
-    protected $replyTo = 'admin@brentwoodbank.com';
+    protected $pageName;
+    protected $emailData;
+    protected $headers = [];
+    //protected $replyTo = 'admin@brentwoodbank.com';
+    protected $replyTo = 'no-reply@brentwoodbank.com';
+    protected $sendTo = 'zach@zachis.it';
+    protected $ccTo = 'matt@matthewjamescreative.com';
+    protected $template = 'Email/formSubmissionEmail';
 
-    public function __construct($emailType,$subject,$body,$sendTo,$from)
+    public function __construct($pageName,$data)
     {
+        $this->headers = array('Content-Type: text/html; charset=UTF-8','From: Brentwood Bank <'.$this->replyTo.'>');
+        $this->headers[] = 'Cc: Person Name <'.$this->ccTo.'>';
         $this->body = [];
 
-        $this->emailType = $emailType;
-        $this->subject = $subject;
-        $this->body = $body;
-        $this->sendTo = $sendTo;
-        $this->from = $from;
-        $this->headers = "From: $this->replyTo\r\nReply-to: $this->replyTo";
+        $this->pageName = $pageName;
+        $this->emailData = $data;
+
     }
 
+    /**
+     * @return bool
+     * @throws \Exception
+     */
     public function sendMail()
     {
-        return wp_mail($this->sendTo, $this->subject, $this->body, $this->headers);
+        $body = Utility::populateTemplateFile( $this->template, [
+            'emailData' => $this->emailData
+        ]);
+
+        return wp_mail($this->sendTo, 'New Contact from '.$this->pageName, $body, $this->headers);
     }
 }

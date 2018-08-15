@@ -87,14 +87,25 @@
         background:#00a0b0;
         border:none;
         outline:none;
-        padding:0.5em 0.9em;
+        padding:0.5em 0.6em;
         color:white;
         font-size:1.12em;
         font-weight:300;
+        width:177px;
+        text-align:left;
+        position:relative;
         text-transform:uppercase;
+        cursor:pointer;
     }
     .marketing_landing_eighteen #SalesContactForm .getStarted:after {
-        content:'>';
+        content:url('/wp-content/themes/BrentwoodBank/images/emailMarketing/arrowButton.jpg');
+        right:7px;
+        top:7px;
+        position:absolute;
+    }
+    #termsAndConditions p {
+        display:block;
+        margin:0 0 1em 0;
     }
 </style>
 <form action="" id="SalesContactForm">
@@ -196,6 +207,7 @@
             /><label for="newContactLearn_RemoteDeposit">Remote Deposit</label>
         </div>
     </div>
+    <?php //@TODO;pass in type via shortcode atts?>
     <input type="hidden" name="formType" value="test" />
     <input type="hidden" name="pageID" value="<?=get_the_ID()?>" />
     <input type="hidden" name="action" value="SalesContactForm" />

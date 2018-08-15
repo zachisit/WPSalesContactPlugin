@@ -37,6 +37,9 @@ class SalesContactForm extends Shortcode
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function bwbMarketingContactForm()
     {
         $contactFormData = [
@@ -55,14 +58,11 @@ class SalesContactForm extends Shortcode
         $formData->insertIntoDB();
 
         $contactFormData['learnAboutOptions'] = explode('|', $contactFormData['learnAboutOptions']);
-        //@TODO:implode with commaspace in template
+        $contactFormData['pageName'] = get_the_title($contactFormData['pageID']);
 
         $email = new Email(
-            'admin',
-            'New Contact from: PageID',
-            $contactFormData,
-            'zach@zachis.it',
-            $contactFormData['email']
+            $contactFormData['pageName'],
+            $contactFormData
             );
         $email->sendMail();
     }
