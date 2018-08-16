@@ -45,15 +45,12 @@ abstract class Shortcode
 
     public function setUpShortcode($atts)
     {
-        error_log('setup');
         if ($this->hasAjax) {
-            error_log('has ajax');
             $scriptName = Utility::getClass($this);
             wp_enqueue_script($scriptName);
             BWBSalesContact::localizedAjaxURL($scriptName);
         }
         if ($this->hasAdditionalScripts) {
-            error_log('has additiona scrips');
             foreach ($this->additionalScripts as $scriptName) {
                 wp_enqueue_script($scriptName);
             }

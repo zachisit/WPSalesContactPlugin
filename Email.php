@@ -9,7 +9,6 @@ class Email
     protected $pageName;
     protected $emailData;
     protected $headers = [];
-    //protected $replyTo = 'admin@brentwoodbank.com';
     protected $replyTo = 'no-reply@brentwoodbank.com';
     protected $sendTo = 'zach@zachis.it';
     protected $ccTo = 'matt@matthewjamescreative.com';
@@ -18,9 +17,12 @@ class Email
     public function __construct($pageName,$data)
     {
         $this->headers = array('Content-Type: text/html; charset=UTF-8','From: Brentwood Bank <'.$this->replyTo.'>');
-        $this->headers[] = 'Cc: Person Name <'.$this->ccTo.'>';
-        $this->body = [];
 
+        if ($data['formType'] === 'sales') {
+            $this->headers[] = 'Cc: Person Name <'.$this->ccTo.'>';
+        }
+
+        $this->body = [];
         $this->pageName = $pageName;
         $this->emailData = $data;
 

@@ -16,6 +16,10 @@ class SalesContactForm extends Shortcode
         'js/contactFormSubmit',
         'js/mobileCheck'
     ];
+    protected $hasAdditionalCSS = true;
+    protected $additionalCSS = [
+        'css/marketingSalesContact'
+    ];
 
     /**
      * @return string
@@ -32,8 +36,14 @@ class SalesContactForm extends Shortcode
      */
     protected function doShortcode($atts)
     {
+        $atts = shortcode_atts(
+            [
+                'type' => null
+            ], $atts
+        );
+
         return $this->createView([
-            //
+            'type' => $atts['type']
         ]);
     }
 

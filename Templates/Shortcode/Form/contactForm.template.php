@@ -2,112 +2,10 @@
 /**
  * Contact Form Template
  *
+ * @var $type
  * @package bwb-contact
  */
 ?>
-<style>
-    .displayNone {
-        display:none;
-    }
-    .inputError {
-        border:1px solid red;
-        padding:1em;
-    }
-    .marketing_landing_eighteen .titleOne {
-        color:#00a0b0;
-        font-size:1.2em;
-        margin:0 0 0.5em 0;
-    }
-    .marketing_landing_eighteen .subHeadline {
-        margin:0 0 0.3em 0 !important;
-    }
-    .marketing_landing_eighteen #SalesContactForm {
-        display:block;
-        margin:1em 0 1.4em 0;
-    }
-    .marketing_landing_eighteen .feedbackMessage {
-        display:block;
-        margin: 0 0 1em 0;
-        color:white;
-        padding:0.4em;
-    }
-    .marketing_landing_eighteen .feedbackMessage.fail {
-        background:red;
-    }
-    .marketing_landing_eighteen .feedbackMessage.success {
-        background:green;
-    }
-    .marketing_landing_eighteen #SalesContactForm .b_input {
-        border:1px solid black;
-        width:400px;
-        padding:0.5em;
-        margin:0 0 0.5em 0;
-        font-size:1em;
-        color:black;
-    }
-    .marketing_landing_eighteen #SalesContactForm .b_inputSmall {
-        border:1px solid black;
-        width:377px;
-        padding:0.5em;
-        margin:0 0 0.5em 0;
-        font-size:1em;
-        color:black;
-    }
-    .marketing_landing_eighteen #SalesContactForm .methodOfContact {
-        margin:0 0 1.2em 0;
-        display:block;
-    }
-    .marketing_landing_eighteen #SalesContactForm .methodOfContact p {
-        display:block;
-        margin:0.5em 0;
-    }
-    .marketing_landing_eighteen #SalesContactForm .cbox_input {
-        background:white;
-        border:1px solid black;
-        padding:0.2em;
-    }
-    .marketing_landing_eighteen #SalesContactForm .methodOfContact .mOCSelector {
-        float:left;
-        margin:0.7em 0.6em 3em 0
-    }
-    .marketing_landing_eighteen #SalesContactForm .learnMoreAboutRow {
-        display:block;
-        height:90px;
-        width:428px;
-    }
-    .marketing_landing_eighteen #SalesContactForm .learnMoreAboutRow .left {
-        width:200px;
-        float:left;
-    }
-    .marketing_landing_eighteen #SalesContactForm .learnMoreAboutRow .right {
-        width:225px;
-        float:right;
-    }
-    .marketing_landing_eighteen #SalesContactForm .getStarted {
-        background:#00a0b0;
-        border:none;
-        outline:none;
-        padding:0.5em 0.6em;
-        color:white;
-        font-size:1.12em;
-        font-weight:300;
-        width:177px;
-        text-align:left;
-        position:relative;
-        text-transform:uppercase;
-        cursor:pointer;
-    }
-    .marketing_landing_eighteen #SalesContactForm .getStarted:after {
-        content:url('/wp-content/themes/BrentwoodBank/images/emailMarketing/arrowButton.jpg');
-        right:7px;
-        top:7px;
-        position:absolute;
-    }
-    #termsAndConditions p {
-        display:block;
-        margin:0 0 1em 0;
-    }
-</style>
 <form action="" id="SalesContactForm">
     <div class="row required">
         <label for="newContactName" class="displayNone">Name</label>
@@ -180,35 +78,34 @@
         <label for="learnMoreAbout[]" class="displayNone">Learn About More:</label><br/>
         <div class="left">
             <input type="checkbox"
-                   id="newContactLearn_IntChecking"
+                   id="Interest-Checking"
                    name="learnMoreAbout[]"
-                   value="newContactLearn_IntChecking"
+                   value="Interest-Checking"
                    class="cbox_input"
-            /><label for="newContactLearn_IntChecking">Interest Checking</label><br/><br/>
+            /><label for="Interest-Checking">Interest Checking</label><br/><br/>
             <input type="checkbox"
-                   id="newContactLearn_FreeChecking"
+                   id="Free-Checking"
                    name="learnMoreAbout[]"
-                   value="newContactLearn_FreeChecking"
+                   value="Free-Checking"
                    class="cbox_input"
-            /><label for="newContactLearn_FreeChecking">Free Checking</label>
+            /><label for="Free-Checking">Free Checking</label>
         </div>
         <div class="right">
             <input type="checkbox"
-                   id="newContactLearn_OnlineBanking"
+                   id="Secure-Online-Banking"
                    name="learnMoreAbout[]"
-                   value="newContactLearn_OnlineBanking"
+                   value="Secure-Online-Banking"
                    class="cbox_input"
-            /><label for="newContactLearn_OnlineBanking">Secure Online Banking</label><br/><br/>
+            /><label for="Secure-Online-Banking">Secure Online Banking</label><br/><br/>
             <input type="checkbox"
-                   id="newContactLearn_RemoteDeposit"
+                   id="Remote-Deposit"
                    name="learnMoreAbout[]"
-                   value="newContactLearn_RemoteDeposit"
+                   value="Remote-Deposit"
                    class="cbox_input"
-            /><label for="newContactLearn_RemoteDeposit">Remote Deposit</label>
+            /><label for="Remote-Deposit">Remote Deposit</label>
         </div>
     </div>
-    <?php //@TODO;pass in type via shortcode atts?>
-    <input type="hidden" name="formType" value="test" />
+    <input type="hidden" name="formType" value="<?=$type?>" />
     <input type="hidden" name="pageID" value="<?=get_the_ID()?>" />
     <input type="hidden" name="action" value="SalesContactForm" />
 

@@ -6,6 +6,10 @@ namespace BWBSalesContact\Shortcodes;
 class ThankYou extends Shortcode
 {
     protected static $shortcodeTag = 'marketingThankYou';
+//    protected $hasAdditionalCSS = true;
+//    protected $additionalCSS = [
+//        'css/thankYou'
+//    ];
 
     /**
      * @return string

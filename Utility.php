@@ -119,8 +119,12 @@ class Utility
         return $ip;
     }
 
-    public static function getCurrentTime()
+    public static function getCurrentTime($format = null,$tz = null)
     {
-        return date('Y-m-d H:i:s');
+        $formatString = ($format) ? $format : 'Y-m-d H:i:s';
+        $timeZone = ($tz) ? $tz : 'America/Kentucky/Louisville';
+
+        $date = new \DateTime('now', new \DateTimeZone($timeZone));
+        return $date->format($formatString);
     }
 }
