@@ -24,7 +24,10 @@ The following tables are required:
 | timeStamp   | timestamp   |
 
 ## Dependencies
+* WordPress
+* PHP 7+
 * jQuery
+* LAMP
 
 ## Shortcodes Used
 * Contact Form - `bwbMarketingContactForm`
