@@ -1,4 +1,5 @@
 # BWB-Sales-Contact
+Object Oriented PHP and jQuery application built for the WordPress environment.
 
 ## Author
 - [Zach Smith](https://twitter.com/zachisit)
@@ -27,6 +28,7 @@ The following tables are required:
 
 ## Shortcodes Used
 * Contact Form - `bwbMarketingContactForm`
+* Thank You Template - `marketingThankYou`
 
 ## WordPress Version
 * At time of last update, this theme was built and tested with WordPress version 4.9.7.
