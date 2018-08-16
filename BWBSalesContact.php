@@ -12,10 +12,6 @@ class BWBSalesContact
     public function __construct()
     {
         register_activation_hook(BWB_SALES_CONTACT, [__CLASS__, 'install']);
-        //register_deactivation_hook(BWB_SALES_CONTACT, [__CLASS__, 'uninstall']);
-
-        //$this->addActions();
-        //$this->registerFilters();
 
         Shortcode::addShortcodes();
     }
@@ -40,16 +36,6 @@ class BWBSalesContact
         return self::getInstance();
     }
 
-    public function addActions()
-    {
-        //
-    }
-
-    public function registerFilters()
-    {
-        //
-    }
-
     /**
      * Called on install
      */
@@ -62,7 +48,7 @@ class BWBSalesContact
 
         $sqlContactSubmissions = "CREATE TABLE $contactSubmissionTableName (
               pageID int(255) NOT NULL,
-              formType int(255) NOT NULL,
+              formType VARCHAR(255),
               name VARCHAR(255) NOT NULL,
               businessName VARCHAR(255) NOT NULL,
               email VARCHAR(999),
@@ -74,11 +60,6 @@ class BWBSalesContact
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sqlContactSubmissions );
-    }
-
-    public static function uninstall()
-    {
-        //
     }
 
     public static function localizedAjaxURL($handle)

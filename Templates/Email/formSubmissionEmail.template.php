@@ -5,14 +5,19 @@
  * @var $emailData
  * @package bwb-contact
  */
-//var_dump($emailData);
 ?>
 New Email Submission from <?=$emailData['pageName']?><br/><br/>
 
-Name: <?=$emailData['name']?><br/>
-Business Name: <?=$emailData['businessName']?><br/>
-Contact: <?=($emailData['email']) ? $emailData['email'] : $emailData['phone']?><br/>
-Interested In:<br/>
+<b>Name:</b><br/>
+<?=$emailData['name']?><br/>
+
+<b>Business Name:</b><br/>
+<?=$emailData['businessName']?><br/>
+
+<b>Contact:</b><br/>
+<?=($emailData['email']) ? $emailData['email'] : $emailData['phone']?><br/>
+
+<b>Interested In:</b><br/>
 <?php foreach ($emailData['learnAboutOptions'] as $k=>$v){
     echo $v.' <br/>';
 }?>

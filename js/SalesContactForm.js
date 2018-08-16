@@ -11,14 +11,15 @@ jQuery(function($) {
     var $newContactForm = $('#SalesContactForm'),
         $formSubmit = $newContactForm.find('.submit'),
         $emailRadioSelected = $('#emailSelected'),
-        $phoneRadioSelected = $('#phoneSelected');
+        $phoneRadioSelected = $('#phoneSelected'),
+        $newContactEmailInput = $('#newContactEmail');
 
     $emailRadioSelected.click(function(){
         if ($emailRadioSelected.is(':checked')) {
             console.log('email selected')
             $('.emailContactRow').addClass('required');
             $('.phoneContactRow').removeClass('required');
-            $('#newContactEmail').removeAttr('disabled');
+            $newContactEmailInput.removeAttr('disabled');
             $('#newContactConfirmEmail').removeAttr('disabled');
             $('#newContactPhone').prop('disabled', true);
         }
@@ -30,7 +31,7 @@ jQuery(function($) {
             $('.phoneContactRow').addClass('required');
             $('.emailContactRow').removeClass('required');
             $('#newContactPhone').removeAttr('disabled');
-            $('#newContactEmail').prop('disabled', true);
+            $newContactEmailInput.prop('disabled', true);
             $('#newContactConfirmEmail').prop('disabled', true);
         }
     });
@@ -86,17 +87,15 @@ jQuery(function($) {
                 //no default
             }
             //check if select option has no value
-
-
-            if ($('#newContactEmail').val().length > 1) {
-                if ($('#newContactEmail').val() !== $('#newContactConfirmEmail').val()) {
+            if ($newContactEmailInput.val().length > 1) {
+                if ($newContactEmailInput.val() !== $('#newContactConfirmEmail').val()) {
                     $(this).closest('.row').addClass('inputError');
                     buildFeedbackMessage($feedbackMessageDiv,'Both email fields do not match',$(this),'fail');
                     submit = false;
                 }
             }
 
-            if (!$('#emailSelected').is(':checked') && !$('#phoneSelected').is(':checked')) {
+            if (!$emailRadioSelected.is(':checked') && !$phoneRadioSelected.is(':checked')) {
                 $('.methodOfContact').addClass('inputError');
                 buildFeedbackMessage($feedbackMessageDiv,'Select method of contact',$(this),'fail');
                 submit = false;
@@ -222,6 +221,4 @@ jQuery(function($) {
                 console.log(r,status,jqXHR)
             })
     }
-
-    //hideFeedbackMessage($userResponseForm,'textarea');
 });

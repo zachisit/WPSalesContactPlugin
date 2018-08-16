@@ -36,9 +36,4 @@ class ContactForm
 
         return $success;
     }
-
-    public static function emailSubmissionData()
-    {
-
-    }
 }
