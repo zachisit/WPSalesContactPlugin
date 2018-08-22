@@ -89,7 +89,8 @@ class Utility
     }
 
     /**
-     * @return bool
+     * @return bool  @comment Shouldn't this be @return string?
+     * @comment This function has a weird name.
      */
     public static function getUserInternetProtocol()
     {
@@ -122,6 +123,9 @@ class Utility
     public static function getCurrentTime($format = null,$tz = null)
     {
         $formatString = ($format) ? $format : 'Y-m-d H:i:s';
+        /**
+         * @comment You should default $tz to the wordpress timezone `get_option('timezone_string')`
+         */
         $timeZone = ($tz) ? $tz : 'America/Kentucky/Louisville';
 
         $date = new \DateTime('now', new \DateTimeZone($timeZone));

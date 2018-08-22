@@ -5,6 +5,10 @@ namespace BWBSalesContact;
 
 class ContactForm
 {
+    /**
+     * @comment None of these should be static
+     * @comment I'm not sure that you need a whole class for this
+     */
     protected static $formData;
     protected static $name;
     protected static $businessName;

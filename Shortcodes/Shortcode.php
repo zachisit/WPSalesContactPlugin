@@ -6,6 +6,9 @@ namespace BWBSalesContact\Shortcodes;
 use BWBSalesContact\BWBSalesContact;
 use BWBSalesContact\Utility;
 
+/**
+ * @comment This is nice!
+ */
 abstract class Shortcode
 {
     protected static $shortcodeTag = false;

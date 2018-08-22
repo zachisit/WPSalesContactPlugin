@@ -9,6 +9,9 @@ class BWBSalesContact
 {
     private static $bwbSalesContact = null;
 
+    /**
+     * @comment This class appears to follow a singleton pattern (which is good for the main plugin file).  Constructors on singletons should be declared private
+     */
     public function __construct()
     {
         register_activation_hook(BWB_SALES_CONTACT, [__CLASS__, 'install']);
